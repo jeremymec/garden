@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CameraCollider
   - Protag
+  - BrownMushrooms
   layers:
   - Default
   - TransparentFX
