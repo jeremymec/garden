@@ -13,7 +13,7 @@ public class TextBoxController : MonoBehaviour
     public string[] lines;
 
     public int currentLine;
-    public int endAtLine;
+    public int endAtLine = 1;
 
     public bool active;
 
@@ -46,8 +46,9 @@ public class TextBoxController : MonoBehaviour
         if (text != null)
         {
             this.lines = text.text.Split('\n');
-            endAtLine = this.lines.Length;
         }
+
+        StartCoroutine(FadeInText(1f, this.text));
 
         active = true;
     }
@@ -55,5 +56,17 @@ public class TextBoxController : MonoBehaviour
     void destroyTextBox()
     {
 
+    }
+
+    public IEnumerator FadeInText(float t, Text i)
+    {
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
+
+        while (i.color.a < 1.0f)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
+
+            yield return null;
+        }
     }
 }
