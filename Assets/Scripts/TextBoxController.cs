@@ -10,6 +10,8 @@ public class TextBoxController : MonoBehaviour
     public GameObject textBox;
     public Text text;
 
+    public List<Text> textObjects;
+
     public TextAsset file;
     public string[] lines;
 
@@ -24,7 +26,6 @@ public class TextBoxController : MonoBehaviour
             return;
         }
 
-        // text.text += lines[currentLine];
     }
 
     public void initTextBox(TextAsset text)
@@ -41,6 +42,7 @@ public class TextBoxController : MonoBehaviour
         this.text.text = lines[currentLine];
 
         Text firstLine = createText();
+        textObjects.Add(firstLine);
 
         StartCoroutine(FadeInText(1f, firstLine));
 
@@ -49,17 +51,33 @@ public class TextBoxController : MonoBehaviour
 
     public void requestNext()
     {
+        if (currentLine >= lines.Length - 1)
+        {
+            destroyTextBox();
+            return;
+        }
+
         currentLine++;
         this.text.text = lines[currentLine];
 
         Text nextLine = createText();
+        textObjects.Add(nextLine);
 
         StartCoroutine(FadeInText(1f, nextLine));
     }
 
     void destroyTextBox()
     {
+        foreach (Text text in textObjects)
+        {
+            Destroy(text);
+        }
 
+        textBox.SetActive(false);
+
+        active = false;
+
+        FindObjectOfType<StateController>().changeState(StateController.STATE.Normal);
     }
 
     public IEnumerator FadeInText(float t, Text i)

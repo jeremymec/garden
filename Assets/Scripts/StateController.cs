@@ -27,12 +27,17 @@ public class StateController : MonoBehaviour {
 
     public void changeState(STATE state)
     {
+        this.state = state;
+
+        PlayerMovement playerMovement = protag.GetComponent<PlayerMovement>();
 
         switch (state)
         {
+            case STATE.Normal:
+                playerMovement.setFrozen(false);
+                break;
+
             case STATE.Dialog:
-                this.state = state;
-                PlayerMovement playerMovement = protag.GetComponent<PlayerMovement>();
                 playerMovement.setFrozen(true);
                 break;
         }
