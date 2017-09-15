@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StateController : MonoBehaviour {
 
+    public GameObject protag;
+
     public enum STATE
     {
         Normal,
@@ -12,7 +14,7 @@ public class StateController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
@@ -26,7 +28,7 @@ public class StateController : MonoBehaviour {
         switch (state)
         {
             case STATE.Dialog:
-                PlayerMovement playerMovement = GetComponent<PlayerMovement>();
+                PlayerMovement playerMovement = protag.GetComponent<PlayerMovement>();
                 playerMovement.setFrozen(true);
                 break;
         }
