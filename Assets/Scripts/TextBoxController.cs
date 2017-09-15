@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +14,6 @@ public class TextBoxController : MonoBehaviour
     public string[] lines;
 
     public int currentLine;
-    public int endAtLine = 1;
 
     public bool active;
 
@@ -24,17 +24,7 @@ public class TextBoxController : MonoBehaviour
             return;
         }
 
-        text.text = lines[currentLine];
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            currentLine++;
-        }
-
-        if (currentLine > endAtLine)
-        {
-            destroyTextBox();
-        }
+        // text.text += lines[currentLine];
     }
 
     public void initTextBox(TextAsset text)
@@ -48,9 +38,23 @@ public class TextBoxController : MonoBehaviour
             this.lines = text.text.Split('\n');
         }
 
-        StartCoroutine(FadeInText(1f, this.text));
+        this.text.text = lines[currentLine];
+
+        Text firstLine = createText();
+
+        StartCoroutine(FadeInText(1f, firstLine));
 
         active = true;
+    }
+
+    public void requestNext()
+    {
+        currentLine++;
+        this.text.text = lines[currentLine];
+
+        Text nextLine = createText();
+
+        StartCoroutine(FadeInText(1f, nextLine));
     }
 
     void destroyTextBox()
@@ -69,4 +73,11 @@ public class TextBoxController : MonoBehaviour
             yield return null;
         }
     }
+
+    Text createText()
+    {
+        Vector3 pos = new Vector3(textBox.transform.position.x + 80, textBox.transform.position.y + 50 - (50 * currentLine), 0f);
+        return Instantiate<Text>(text, pos, Quaternion.identity, textBox.transform);
+    }
+
 }
