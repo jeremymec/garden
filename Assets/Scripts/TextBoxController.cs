@@ -19,6 +19,8 @@ public class TextBoxController : MonoBehaviour
 
     public bool active;
 
+    static float duration = 0.5f;
+
     void Update()
     {   
         if (!active)
@@ -44,7 +46,7 @@ public class TextBoxController : MonoBehaviour
         Text firstLine = createText();
         textObjects.Add(firstLine);
 
-        StartCoroutine(FadeInText(1f, firstLine));
+        StartCoroutine(FadeInText(duration, firstLine));
 
         active = true;
     }
@@ -63,19 +65,19 @@ public class TextBoxController : MonoBehaviour
         Text nextLine = createText();
         textObjects.Add(nextLine);
 
-        StartCoroutine(FadeInText(1f, nextLine));
+        StartCoroutine(FadeInText(duration, nextLine));
     }
 
     void destroyTextBox()
     {
+        active = false;
+
         foreach (Text text in textObjects)
         {
             Destroy(text);
         }
 
         textBox.SetActive(false);
-
-        active = false;
 
         FindObjectOfType<StateController>().changeState(StateController.STATE.Normal);
     }
@@ -84,17 +86,25 @@ public class TextBoxController : MonoBehaviour
     {
         i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
 
-        while (i.color.a < 1.0f)
-        {
-            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
+        while (i.color.a < 1f)
+        {   
+            if (i == null)
+            {
+                yield break;
 
-            yield return null;
+            } else
+            {
+                i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
+                yield return null;
+            }
+
         }
+
     }
 
     Text createText()
     {
-        Vector3 pos = new Vector3(textBox.transform.position.x + 80, textBox.transform.position.y + 50 - (50 * currentLine), 0f);
+        Vector3 pos = new Vector3(textBox.transform.position.x + 60, textBox.transform.position.y + 50 - (50 * currentLine), 0f);
         return Instantiate<Text>(text, pos, Quaternion.identity, textBox.transform);
     }
 
