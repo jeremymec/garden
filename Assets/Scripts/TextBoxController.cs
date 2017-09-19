@@ -104,8 +104,10 @@ public class TextBoxController : MonoBehaviour
 
     Text createText()
     {
-        Vector3 pos = new Vector3(textBox.transform.position.x + 60, textBox.transform.position.y + 50 - (50 * currentLine), 0f);
-        return Instantiate<Text>(text, pos, Quaternion.identity, textBox.transform);
+        Vector3 pos = new Vector3(textBox.transform.position.x + 60, textBox.transform.position.y + 30 - (50 * currentLine), 0f);
+        Text createdText = Instantiate<Text>(text, pos, Quaternion.identity, textBox.transform);
+
+        return createdText;
     }
 
 }
