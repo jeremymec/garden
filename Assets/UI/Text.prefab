@@ -60,7 +60,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "A pair of wild forest mushrooms.\r"
+  m_Text: Placeholder
 --- !u!222 &222261767604276746
 CanvasRenderer:
   m_ObjectHideFlags: 1
