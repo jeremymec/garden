@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractableDialog : MonoBehaviour {
 
-    public TextAsset text;
+    public TextController[] textControllers;
 
     public TextBoxController textBoxController;
     public StateController stateController;
@@ -33,7 +33,7 @@ public class InteractableDialog : MonoBehaviour {
                 if (stateController.getState() == StateController.STATE.Normal)
                 {
                     stateController.changeState(StateController.STATE.Dialog);
-                    textBoxController.initTextBox(text);
+                    textBoxController.initTextBox(textControllers);
 
                 } else if (stateController.getState() == StateController.STATE.Dialog)
                 {
