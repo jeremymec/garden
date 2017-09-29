@@ -63,7 +63,7 @@ public class TextBoxController : MonoBehaviour
         if (currentTextController == null || currentLine >= (textSections.Length))
         {
             nextTextBoxController();
-
+            clearText();
         }
 
         if (textBox.activeSelf)
