@@ -4,30 +4,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Controller for the DialogBox Gameobject. Scene-persistent, i.e. created at the start of any scene where dialog is required, persists until the screen is destroyed.
+/// Handles the display of the Canvas TextBox, and the loading and unloading of text onto this box.
+/// </summary>
 public class TextBoxController : MonoBehaviour
 {
 
+    // Canvas Image of a textbox to draw text on
     public GameObject textBox;
+
+    // Text prefab to be initialized with custom text
     public Text baseText;
 
+    // A list of all Text currently displayed on the box, for use in clearing the box
     public List<Text> textObjects;
 
+    // The textcontrollers currently queued up to this instance of TextBoxController
     public Queue<TextController> textControllers;
     public TextController currentTextController;
 
+    // Information about the raw text to be displayed
     public string[] textSections;
     public int currentLine;
 
-    public bool active;
-
+    // Text fade-in duration, larger float results in a longer fade in time
     static float duration = 0.5f;
 
     void Update()
     {   
-        if (!active)
-        {
-            return;
-        }
 
     }
 
@@ -47,6 +52,7 @@ public class TextBoxController : MonoBehaviour
             this.textControllers.Enqueue(tc);
         }
 
+        // Displays the first line of text on creation
         requestNext();
     }
 
@@ -66,6 +72,7 @@ public class TextBoxController : MonoBehaviour
             clearText();
         }
 
+        // Only attempt to draw text when the box is active
         if (textBox.activeSelf)
         {
             nextSection();
@@ -92,7 +99,7 @@ public class TextBoxController : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Requests and displays the next section of text in the current textController.
     /// </summary>
     void nextSection()
     {
@@ -111,6 +118,9 @@ public class TextBoxController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Clears all current text from the dialog box by calling Destroy() on the TextObjects
+    /// </summary>
     void clearText()
     {
         foreach (Text text in textObjects)
@@ -119,14 +129,13 @@ public class TextBoxController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// "Destroys" the current instance of the TextBox by clearing all the text, nulling revelent fields and setting active to false so it is removed from the screen.
+    /// Instructs the state controller to change state from Dialog to normal
+    /// </summary>
     void destroyTextBox()
     {
-        active = false;
-
-        foreach (Text text in textObjects)
-        {
-            Destroy(text);
-        }
+        clearText();
 
         this.currentTextController = null;
 
@@ -135,10 +144,18 @@ public class TextBoxController : MonoBehaviour
         FindObjectOfType<StateController>().changeState(StateController.STATE.Normal);
     }
 
+    /// <summary>
+    /// Coroutine to fade in the given line of text onto the TextBox
+    /// </summary>
+    /// <param name="t">Length of fade in</param>
+    /// <param name="i">Text to fade in</param>
+    /// <returns></returns>
     public IEnumerator FadeInText(float t, Text i)
-    {
+    {   
+        // Creates new color at maximum alpha
         i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
 
+        // While colour is less than white, increment color
         while (i.color.a < 1f)
         {   
             if (i == null)
@@ -155,6 +172,10 @@ public class TextBoxController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Initializes a new Text object from the base prefab, sets its position based on the current line, and returns the object. 
+    /// </summary>
+    /// <returns>Newly instantiated Text object</returns>
     Text createText()
     {
         Vector3 pos = new Vector3(textBox.transform.position.x + 60, textBox.transform.position.y + 30 - (50 * currentLine), 0f);
