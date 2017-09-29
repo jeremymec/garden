@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4391401841174304}
   - component: {fileID: 114676298373546044}
   m_Layer: 0
-  m_Name: locketText1 1
+  m_Name: locketText2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,5 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de25af8a925587a45920a174e3e26968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rawText: {fileID: 4900000, guid: 10f496d41561d7d42a4d8108607f6ae7, type: 3}
+  rawText: {fileID: 4900000, guid: 008a9fda125e6c54dac2f9a5482599dc, type: 3}
   textType: 0

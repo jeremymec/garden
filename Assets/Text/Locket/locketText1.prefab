@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4372801714587414}
+  - component: {fileID: 114778713294738652}
   m_Layer: 0
   m_Name: locketText1
   m_TagString: Untagged
@@ -33,9 +34,22 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1051941494401982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1735787, y: 4.449847, z: -0.076171875}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114778713294738652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051941494401982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de25af8a925587a45920a174e3e26968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rawText: {fileID: 4900000, guid: 10f496d41561d7d42a4d8108607f6ae7, type: 3}
+  textType: 0

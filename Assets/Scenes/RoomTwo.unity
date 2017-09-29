@@ -982,7 +982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0b46332ece4a5469127122513414a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 4900000, guid: 7730a0b4bb898d64fb376e85a27da466, type: 3}
+  textControllers: []
   textBoxController: {fileID: 382678248}
   stateController: {fileID: 1155179737}
 --- !u!4 &337350695 stripped
@@ -1782,7 +1782,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4550804215659474, guid: 68c6cd2efbd69cd4ebb6f057b7e17a3d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4409695908038938, guid: 68c6cd2efbd69cd4ebb6f057b7e17a3d, type: 2}
       propertyPath: m_LocalScale.x
@@ -3274,7 +3274,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.007833004, y: -0.08355202}
+  m_Offset: {x: 0.007833004, y: -0.05294461}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3285,7 +3285,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6295296, y: 0.3374447}
+  m_Size: {x: 0.6295296, y: 0.27622986}
   m_EdgeRadius: 0
 --- !u!1001 &1168267911
 Prefab:
@@ -4087,6 +4087,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1314166737}
   - component: {fileID: 1314166736}
+  - component: {fileID: 1314166738}
+  - component: {fileID: 1314166739}
   m_Layer: 0
   m_Name: Locket
   m_TagString: Untagged
@@ -4149,6 +4151,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!114 &1314166738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1314166735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0b46332ece4a5469127122513414a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textControllers:
+  - {fileID: 114778713294738652, guid: 00eba5fcff94f1f41b4bfacbd491642b, type: 2}
+  - {fileID: 114676298373546044, guid: 2b8fe63709afdbd44b9db026ed74f90a, type: 2}
+  textBoxController: {fileID: 382678248}
+  stateController: {fileID: 1155179737}
+--- !u!61 &1314166739
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1314166735}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.013721228, y: -1.624683}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8888889, y: 0.8888889}
+    newSize: {x: 0.8888889, y: 0.8888889}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.7909508, y: 1.2479994}
+  m_EdgeRadius: 0
 --- !u!4 &1321144551 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4409695908038938, guid: 68c6cd2efbd69cd4ebb6f057b7e17a3d,
@@ -4606,6 +4649,12 @@ Prefab:
       propertyPath: textBox
       value: 
       objectReference: {fileID: 1405740016}
+    - target: {fileID: 114046171751685924, guid: d8fca1b571d9ff7419144d3991a63ca4,
+        type: 2}
+      propertyPath: baseText
+      value: 
+      objectReference: {fileID: 114901076195159928, guid: c28a291734963b34289ed7516083e767,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8fca1b571d9ff7419144d3991a63ca4, type: 2}
   m_IsPrefabParent: 0
@@ -6352,7 +6401,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4409695908038938, guid: 68c6cd2efbd69cd4ebb6f057b7e17a3d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -23
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4409695908038938, guid: 68c6cd2efbd69cd4ebb6f057b7e17a3d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -6380,7 +6429,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4550804215659474, guid: 68c6cd2efbd69cd4ebb6f057b7e17a3d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4409695908038938, guid: 68c6cd2efbd69cd4ebb6f057b7e17a3d, type: 2}
       propertyPath: m_LocalScale.x
