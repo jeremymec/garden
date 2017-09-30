@@ -59,7 +59,8 @@ public class TextBoxController : MonoBehaviour
 
     /// <summary>
     /// Called when the player presses the determined key to advance dialog. It determines the current TextController has reached its end, and if so requests a new one.
-    /// Regardless of result, calls nextSection function to display the next section of text.
+    /// Regardless of result, calls nextSection function to display the next section of text. Also triggers the execute() function of the previous script contoller,
+    /// to simulate onExit behaviour.
     /// </summary>
     public void requestNext()
     {
@@ -112,16 +113,26 @@ public class TextBoxController : MonoBehaviour
         switch (currentTextController.getType())
         {
             case TextController.Type.Normal:
-                Text nextSection = createText();
+                newTextFromCurrentLine(0, 0);
+                break;
 
-                nextSection.text = textSections[currentLine];
-                currentLine++;
-
-                textObjects.Add(nextSection);
-
-                StartCoroutine(FadeInText(duration, nextSection));
+            case TextController.Type.Question:
+                newTextFromCurrentLine(0, 0);
+                newTextFromCurrentLine(0, 1);
+                newTextFromCurrentLine(1, 0);
                 break;
         }
+    }
+
+    void newTextFromCurrentLine(int xInc, int yInc)
+    {
+        Text nextSection = createText(xInc, yInc);
+        nextSection.text = textSections[currentLine];
+        currentLine++;
+
+        textObjects.Add(nextSection);
+
+        StartCoroutine(FadeInText(duration, nextSection));
     }
 
     /// <summary>
@@ -182,9 +193,13 @@ public class TextBoxController : MonoBehaviour
     /// Initializes a new Text object from the base prefab, sets its position based on the current line, and returns the object. 
     /// </summary>
     /// <returns>Newly instantiated Text object</returns>
-    Text createText()
+    Text createText(int xIncrement, int yIncrement)
     {
-        Vector3 pos = new Vector3(textBox.transform.position.x + 60, textBox.transform.position.y + 30 - (50 * currentLine), 0f);
+
+        float xPos = (textBox.transform.position.x + 60) + (xIncrement * 100);
+        float yPos = (textBox.transform.position.y + 30) - (50 * currentLine) - (yIncrement * 50);
+
+        Vector3 pos = new Vector3(xPos, yPos, 0f);
         Text createdText = Instantiate<Text>(baseText, pos, Quaternion.identity, textBox.transform);
 
         return createdText;

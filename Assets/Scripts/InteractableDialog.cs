@@ -9,8 +9,6 @@ public class InteractableDialog : MonoBehaviour {
     public TextBoxController textBoxController;
     public StateController stateController;
 
-    static int i = 0;
-
 	// Use this for initialization
 	void Start () {
         textBoxController = FindObjectOfType<TextBoxController>();
