@@ -12,6 +12,8 @@ public class TextController : MonoBehaviour {
 
     public TextAsset rawText;
 
+    public GameObject attachedScript;
+
     public Type textType;
 
 	// Use this for initialization
@@ -27,6 +29,17 @@ public class TextController : MonoBehaviour {
     public Type getType()
     {
         return textType;
+    }
+
+    public void execute()
+    {
+        Debug.Log("Execute");
+        if (attachedScript == null)
+        {
+            return;
+        }
+
+
     }
 
 }

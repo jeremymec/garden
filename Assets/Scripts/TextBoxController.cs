@@ -114,6 +114,7 @@ public class TextBoxController : MonoBehaviour
                 textObjects.Add(nextSection);
 
                 StartCoroutine(FadeInText(duration, nextSection));
+                currentTextController.execute();
                 break;
         }
     }
