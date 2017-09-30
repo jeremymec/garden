@@ -40,7 +40,7 @@ public class InteractableDialog : MonoBehaviour {
                 }
                 else if (stateController.getState() == StateController.STATE.DialogQuestion)
                 {
-
+                    textBoxController.requestNext();
                 }
             }
 

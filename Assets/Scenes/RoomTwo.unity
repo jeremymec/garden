@@ -3303,7 +3303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1162825056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3347,12 +3347,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
-  m_Father: {fileID: 1405740019}
-  m_RootOrder: 0
+  m_Father: {fileID: 1410971382}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110, y: -148}
+  m_AnchoredPosition: {x: 1581.6665, y: -100.00012}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1168267911
@@ -4620,9 +4620,9 @@ GameObject:
   m_PrefabParentObject: {fileID: 1171048355943838, guid: 4b9f264337c26ec4faa8bf739f6b35a7,
     type: 2}
   m_PrefabInternal: {fileID: 1588205661}
---- !u!224 &1405740019 stripped
+--- !u!224 &1410971382 stripped
 RectTransform:
-  m_PrefabParentObject: {fileID: 224639241160906250, guid: 4b9f264337c26ec4faa8bf739f6b35a7,
+  m_PrefabParentObject: {fileID: 224789404460270060, guid: 4b9f264337c26ec4faa8bf739f6b35a7,
     type: 2}
   m_PrefabInternal: {fileID: 1588205661}
 --- !u!1001 &1419771533
@@ -5245,7 +5245,7 @@ Prefab:
       objectReference: {fileID: 1193092937}
     - target: {fileID: 1171048355943838, guid: 4b9f264337c26ec4faa8bf739f6b35a7, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b9f264337c26ec4faa8bf739f6b35a7, type: 2}

@@ -80,7 +80,7 @@ public class TextBoxController : MonoBehaviour
         }
         else if (currentLine >= (textSections.Length))
         {
-            currentTextController.execute();
+            executeText();
             nextTextBoxController();
             clearText();
         }
@@ -134,6 +134,21 @@ public class TextBoxController : MonoBehaviour
         }
     }
 
+    public void executeText()
+    {   
+        if (stateController.getState() == StateController.STATE.DialogQuestion)
+        {
+            if (currentTextController.getSelected() == 1)
+            {
+                currentTextController.execute();
+            }
+        } else
+        {
+            currentTextController.execute();
+        }
+        
+    }
+
     public void switchSelection()
     {
         currentTextController.switchSelection();
@@ -145,19 +160,7 @@ public class TextBoxController : MonoBehaviour
         selectionArrow.SetActive(true);
         RectTransform arrowTransform = selectionArrow.GetComponent<RectTransform>();
 
-        switch (option)
-        {
-            case 1:
-                Debug.Log("Shifting Left");
-                arrowTransform.Translate(-100f, 0f, 0f);
-                break;
-            case 2:
-                arrowTransform.Translate(100f, 0f, 0f);
-                break;
-
-    }
-        
-        // arrowTransform.SetPositionAndRotation(new Vector3(xPos, yPos, 0f), Quaternion.identity);
+        arrowTransform.SetPositionAndRotation(new Vector3(410f + (100f * (option)), 86f, 0f), Quaternion.identity);
 
     }
 
@@ -193,9 +196,13 @@ public class TextBoxController : MonoBehaviour
 
         this.currentTextController = null;
 
+        FindObjectOfType<StateController>().changeState(StateController.STATE.Normal);
+
+        selectionArrow.GetComponent<RectTransform>().SetPositionAndRotation(new Vector3(410f + (100f * (2)), 86f, 0f), Quaternion.identity);
+        selectionArrow.SetActive(false);
+
         textBox.SetActive(false);
 
-        FindObjectOfType<StateController>().changeState(StateController.STATE.Normal);
     }
 
     /// <summary>

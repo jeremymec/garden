@@ -52,6 +52,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rawText: {fileID: 4900000, guid: 008a9fda125e6c54dac2f9a5482599dc, type: 3}
-  attachedScript: {fileID: 1477877488182306, guid: d23560b518a6de44888b3c8aa38b1574,
-    type: 2}
+  attachedScript: {fileID: 0}
   textType: 0
