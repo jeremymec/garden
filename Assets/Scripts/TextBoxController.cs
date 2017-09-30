@@ -66,8 +66,14 @@ public class TextBoxController : MonoBehaviour
 
         // Debug.Log("request next called with currentLine value of " + currentLine + " and textSections value of " + textSections.Length);
 
-        if (currentTextController == null || currentLine >= (textSections.Length))
+        if (currentTextController == null)
         {
+            nextTextBoxController();
+            clearText();
+        }
+        else if (currentLine >= (textSections.Length))
+        {
+            currentTextController.execute();
             nextTextBoxController();
             clearText();
         }
@@ -85,7 +91,7 @@ public class TextBoxController : MonoBehaviour
     /// Triggers the removal of the text box if the textController queue is empty.
     /// </summary>
     void nextTextBoxController()
-    {
+    {   
         if (textControllers.Count == 0)
         {
             destroyTextBox();
@@ -114,7 +120,6 @@ public class TextBoxController : MonoBehaviour
                 textObjects.Add(nextSection);
 
                 StartCoroutine(FadeInText(duration, nextSection));
-                currentTextController.execute();
                 break;
         }
     }

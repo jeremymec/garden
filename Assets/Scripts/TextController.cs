@@ -32,14 +32,11 @@ public class TextController : MonoBehaviour {
     }
 
     public void execute()
-    {
-        Debug.Log("Execute");
-        if (attachedScript == null)
+    {   
+        if (attachedScript != null)
         {
-            return;
+            Instantiate(attachedScript);
         }
-
-
     }
 
 }
