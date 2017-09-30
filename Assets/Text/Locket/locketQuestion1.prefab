@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4828413733335486}
   - component: {fileID: 114161495002566284}
   m_Layer: 0
-  m_Name: locketText2 1
+  m_Name: locketQuestion1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de25af8a925587a45920a174e3e26968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rawText: {fileID: 4900000, guid: 008a9fda125e6c54dac2f9a5482599dc, type: 3}
+  rawText: {fileID: 4900000, guid: 67b144953644f7343bbc9c849072e9d5, type: 3}
   attachedScript: {fileID: 1477877488182306, guid: d23560b518a6de44888b3c8aa38b1574,
     type: 2}
-  textType: 0
+  textType: 1

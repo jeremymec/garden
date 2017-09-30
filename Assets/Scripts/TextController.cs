@@ -16,8 +16,11 @@ public class TextController : MonoBehaviour {
 
     public Type textType;
 
-	// Use this for initialization
-	void Start () {
+    // The currently selected option in the TextBox
+    int optionSelected = 1;
+
+    // Use this for initialization
+    void Start () {
 
 	}
 	
@@ -29,6 +32,24 @@ public class TextController : MonoBehaviour {
     public Type getType()
     {
         return textType;
+    }
+
+    public int getSelected()
+    {
+        return optionSelected;
+    }
+
+    public void switchSelection()
+    {
+        switch (optionSelected)
+        {
+            case 1:
+                optionSelected = 2;
+                break;
+            case 2:
+                optionSelected = 1;
+                break;
+        }
     }
 
     public void execute()

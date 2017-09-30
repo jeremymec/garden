@@ -12,7 +12,8 @@ public class StateController : MonoBehaviour {
     public enum STATE
     {
         Normal,
-        Dialog
+        Dialog,
+        DialogQuestion
     }
 
 	// Use this for initialization

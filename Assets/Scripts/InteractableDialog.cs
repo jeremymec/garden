@@ -22,25 +22,52 @@ public class InteractableDialog : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (collision.CompareTag("Protag"))
         {
-        
-            if (collision.CompareTag("Protag"))
-            {
 
+            if (Input.GetKeyDown(KeyCode.F))
+            {
                 if (stateController.getState() == StateController.STATE.Normal)
                 {
                     stateController.changeState(StateController.STATE.Dialog);
                     textBoxController.initTextBox(textControllers);
 
-                } else if (stateController.getState() == StateController.STATE.Dialog)
+                }
+                else if (stateController.getState() == StateController.STATE.Dialog)
                 {
                     textBoxController.requestNext();
+
                 }
+                else if (stateController.getState() == StateController.STATE.DialogQuestion)
+                {
 
-
-
+                }
             }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                if (stateController.getState() == StateController.STATE.DialogQuestion)
+                {   
+                    if (textBoxController.currentTextController.getSelected() == 1)
+                    {
+                        textBoxController.switchSelection();
+                    }
+                    
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                if (stateController.getState() == StateController.STATE.DialogQuestion)
+                {
+                    if (textBoxController.currentTextController.getSelected() == 2)
+                    {
+                        textBoxController.switchSelection();
+                    }
+
+                }
+            }
+
         }
 
     }

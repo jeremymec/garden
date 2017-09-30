@@ -14,11 +14,17 @@ public class TextBoxController : MonoBehaviour
     // Canvas Image of a textbox to draw text on
     public GameObject textBox;
 
+    // Canvas Image of the selection arrow
+    public GameObject selectionArrow;
+
     // Text prefab to be initialized with custom text
     public Text baseText;
 
     // A list of all Text currently displayed on the box, for use in clearing the box
     public List<Text> textObjects;
+    
+    // Needs a refrence to StateController for dialog
+    StateController stateController;
 
     // The textcontrollers currently queued up to this instance of TextBoxController
     public Queue<TextController> textControllers;
@@ -31,9 +37,9 @@ public class TextBoxController : MonoBehaviour
     // Text fade-in duration, larger float results in a longer fade in time
     static float duration = 0.5f;
 
-    void Update()
-    {   
-
+    void Start()
+    {
+        this.stateController = FindObjectOfType<StateController>();
     }
 
     /// <summary>
@@ -117,11 +123,42 @@ public class TextBoxController : MonoBehaviour
                 break;
 
             case TextController.Type.Question:
+                stateController.changeState(StateController.STATE.DialogQuestion);
+
                 newTextFromCurrentLine(0, 0);
                 newTextFromCurrentLine(0, 1);
                 newTextFromCurrentLine(1, 0);
+
+                selectText(currentTextController.getSelected());
                 break;
         }
+    }
+
+    public void switchSelection()
+    {
+        currentTextController.switchSelection();
+        selectText(currentTextController.getSelected());
+    }
+
+    void selectText(int option)
+    {
+        selectionArrow.SetActive(true);
+        RectTransform arrowTransform = selectionArrow.GetComponent<RectTransform>();
+
+        switch (option)
+        {
+            case 1:
+                Debug.Log("Shifting Left");
+                arrowTransform.Translate(-100f, 0f, 0f);
+                break;
+            case 2:
+                arrowTransform.Translate(100f, 0f, 0f);
+                break;
+
+    }
+        
+        // arrowTransform.SetPositionAndRotation(new Vector3(xPos, yPos, 0f), Quaternion.identity);
+
     }
 
     void newTextFromCurrentLine(int xInc, int yInc)
@@ -134,7 +171,7 @@ public class TextBoxController : MonoBehaviour
 
         StartCoroutine(FadeInText(duration, nextSection));
     }
-
+    
     /// <summary>
     /// Clears all current text from the dialog box by calling Destroy() on the TextObjects
     /// </summary>
