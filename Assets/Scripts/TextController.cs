@@ -12,7 +12,7 @@ public class TextController : MonoBehaviour {
 
     public TextAsset rawText;
 
-    public GameObject attachedScript;
+    public GameObject[] attachedScripts;
 
     public Type textType;
 
@@ -52,12 +52,17 @@ public class TextController : MonoBehaviour {
         }
     }
 
-    public void execute()
+    public void Execute()
     {   
-        if (attachedScript != null)
+        for (int i = 0; i < attachedScripts.Length; i++)
         {
-            Instantiate(attachedScript);
-        }
-    }
 
+            GameObject scriptableBehaviour = Instantiate(attachedScripts[i]);
+            ScriptableBehaviour script = scriptableBehaviour.GetComponent<ScriptableBehaviour>();
+            script.executeScript(optionSelected);
+
+        }
+            
+        }
 }
+

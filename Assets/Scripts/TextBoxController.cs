@@ -135,17 +135,9 @@ public class TextBoxController : MonoBehaviour
     }
 
     public void executeText()
-    {   
-        if (stateController.getState() == StateController.STATE.DialogQuestion)
-        {
-            if (currentTextController.getSelected() == 1)
-            {
-                currentTextController.execute();
-            }
-        } else
-        {
-            currentTextController.execute();
-        }
+    {
+
+        currentTextController.Execute();
         
     }
 
@@ -160,7 +152,7 @@ public class TextBoxController : MonoBehaviour
         selectionArrow.SetActive(true);
         RectTransform arrowTransform = selectionArrow.GetComponent<RectTransform>();
 
-        arrowTransform.SetPositionAndRotation(new Vector3(410f + (100f * (option)), 86f, 0f), Quaternion.identity);
+        arrowTransform.SetPositionAndRotation(new Vector3(230f + (100f * (option)), 86f, 0f), Quaternion.identity);
 
     }
 
@@ -182,8 +174,10 @@ public class TextBoxController : MonoBehaviour
     {
         foreach (Text text in textObjects)
         {
-            Destroy(text);
+            Destroy(text.gameObject);
         }
+
+        textObjects.Clear();
     }
 
     /// <summary>
@@ -196,7 +190,10 @@ public class TextBoxController : MonoBehaviour
 
         this.currentTextController = null;
 
-        FindObjectOfType<StateController>().changeState(StateController.STATE.Normal);
+        if (FindObjectOfType<StateController>().getState() != StateController.STATE.Frozen)
+        {
+            FindObjectOfType<StateController>().changeState(StateController.STATE.Normal);
+        }
 
         selectionArrow.GetComponent<RectTransform>().SetPositionAndRotation(new Vector3(410f + (100f * (2)), 86f, 0f), Quaternion.identity);
         selectionArrow.SetActive(false);

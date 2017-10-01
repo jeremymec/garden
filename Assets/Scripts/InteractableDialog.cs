@@ -20,6 +20,11 @@ public class InteractableDialog : MonoBehaviour {
 		
 	}
 
+    public void updateText(TextController[] updatedText)
+    {
+        this.textControllers = updatedText;
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Protag"))

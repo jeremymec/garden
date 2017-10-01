@@ -13,7 +13,8 @@ public class StateController : MonoBehaviour {
     {
         Normal,
         Dialog,
-        DialogQuestion
+        DialogQuestion,
+        Frozen
     }
 
 	// Use this for initialization
@@ -32,6 +33,7 @@ public class StateController : MonoBehaviour {
 
         PlayerMovement playerMovement = protag.GetComponent<PlayerMovement>();
 
+
         switch (state)
         {
             case STATE.Normal:
@@ -39,6 +41,9 @@ public class StateController : MonoBehaviour {
                 break;
 
             case STATE.Dialog:
+                playerMovement.setFrozen(true);
+                break;
+            case STATE.Frozen:
                 playerMovement.setFrozen(true);
                 break;
         }
