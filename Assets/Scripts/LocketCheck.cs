@@ -23,9 +23,16 @@ public class LocketCheck : MonoBehaviour
 
         if (coll.gameObject.tag == "Protag")
         {
-            int indexOfSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
-            Debug.Log("Loading level at id: " + indexOfSceneToLoad + "!");
-            SceneManager.LoadScene(indexOfSceneToLoad);
+            PlayerInfo playerInfo = FindObjectOfType<PlayerInfo>();
+
+            if (playerInfo.getHasLocket())
+            {
+                int indexOfSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
+                Debug.Log("Loading level at id: " + indexOfSceneToLoad + "!");
+                SceneManager.LoadScene(indexOfSceneToLoad);
+                FindObjectOfType<AudioController>().playClip(AudioController.Sounds.Wind);
+            }
+
         }
 
     }

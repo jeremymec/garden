@@ -17,8 +17,13 @@ public class StateController : MonoBehaviour {
         Frozen
     }
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    // Use this for initialization
+    void Start () {
         this.state = STATE.Normal;
 	}
 	
