@@ -22,7 +22,7 @@ public class SceneMover : MonoBehaviour {
 
         if (coll.gameObject.tag == "Protag")
         {
-            GameObject.FindObjectOfType<SceneController>().loadScene(targetScene, SceneController.Transition.None);
+            GameObject.FindObjectOfType<SceneController>().loadScene(targetScene, SceneController.Transition.Fade);
         }
 
     }

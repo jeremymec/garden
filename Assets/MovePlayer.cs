@@ -17,7 +17,7 @@ public class MovePlayer : MonoBehaviour {
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("Ring Ring I am called!");
+        // Debug.Log("Ring Ring I am called!");
         GameObject protag = GameObject.FindGameObjectWithTag("Protag");
         protag.transform.SetPositionAndRotation(gameObject.transform.position, gameObject.transform.rotation);
     }
