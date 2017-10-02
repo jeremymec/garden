@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/RoomOne.unity
+    path: Assets/Scenes/ForestClearing.unity
     guid: 1cf7cd3676dcbb44a95c28f5a719c828
   - enabled: 1
-    path: Assets/Scenes/RoomTwo.unity
+    path: Assets/Scenes/ForestPath.unity
     guid: bb8b582a6dc5ba243b12763fd4ca5a96
   - enabled: 1
-    path: Assets/Scenes/RoomTwoLocket.unity
+    path: Assets/Scenes/ForestPathUnlocked.unity
     guid: 28ff9579b25e3f0478f232ecb98cba22
