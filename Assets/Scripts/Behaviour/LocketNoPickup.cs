@@ -28,4 +28,9 @@ public class LocketNoPickup : MonoBehaviour, ScriptableBehaviour {
         Destroy(this.gameObject);
 
     }
+
+    public void setTarget(GameObject parent)
+    {
+        
+    }
 }

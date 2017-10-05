@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface ScriptableBehaviour {
 
-    void executeScript(int condition);
+    void executeScript(GameObject agent);
 	
 }

@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour {
 
+    public enum FlowerType
+    {   
+        None,
+        Red,
+        Blue
+    }
+
     public bool hasLocket;
+    public FlowerType lookedAtFlower = FlowerType.None;
 
     private void Awake()
     {
@@ -20,5 +28,16 @@ public class PlayerInfo : MonoBehaviour {
     {
         return this.hasLocket;
     }
+
+    public void setLookedAtFlower(FlowerType data)
+    {
+        this.lookedAtFlower = data;
+    }
+
+    public FlowerType getLookedAtFlower()
+    {
+        return this.lookedAtFlower;
+    }
+
 	
 }

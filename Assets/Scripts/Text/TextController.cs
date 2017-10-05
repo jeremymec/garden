@@ -2,6 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public abstract class TextController: MonoBehaviour
+{
+
+    public TextAsset rawText;
+
+    GameObject agent;
+
+    public TextAsset getTextAsset()
+    {
+        return rawText;
+    }
+
+    protected void runScripts(GameObject[] scripts)
+    {
+        for (int i = 0; i < scripts.Length; i++)
+        {
+            GameObject scriptableBehaviour = Instantiate(scripts[i]);
+            ScriptableBehaviour script = scriptableBehaviour.GetComponent<ScriptableBehaviour>();
+            script.executeScript(agent);
+
+        }
+    }
+
+}
+
+/*
 public class TextController : MonoBehaviour {
 
     public enum Type
@@ -59,10 +85,12 @@ public class TextController : MonoBehaviour {
 
             GameObject scriptableBehaviour = Instantiate(attachedScripts[i]);
             ScriptableBehaviour script = scriptableBehaviour.GetComponent<ScriptableBehaviour>();
+            script.setTarget(gameObject);
             script.executeScript(optionSelected);
 
         }
             
         }
 }
+*/
 
