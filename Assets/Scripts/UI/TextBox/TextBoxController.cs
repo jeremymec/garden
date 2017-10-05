@@ -4,13 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+public class TextBoxController : MonoBehaviour
+{
+    public GameObject textBox;
+}
+
+
+/*
 /// <summary>
 /// Controller for the DialogBox Gameobject. Scene-persistent, i.e. created at the start of any scene where dialog is required, persists until the screen is destroyed.
 /// Handles the display of the Canvas TextBox, and the loading and unloading of text onto this box.
 /// </summary>
 public class TextBoxController : MonoBehaviour
 {
-
     // Canvas Image of a textbox to draw text on
     public GameObject textBox;
 
@@ -33,6 +40,9 @@ public class TextBoxController : MonoBehaviour
     // Information about the raw text to be displayed
     public string[] textSections;
     public int currentLine;
+
+    // STATIC VARS
+    public static int lineSpacing = 50;
 
     // Text fade-in duration, larger float results in a longer fade in time
     static float duration = 0.5f;
@@ -70,8 +80,6 @@ public class TextBoxController : MonoBehaviour
     /// </summary>
     public void requestNext()
     {
-
-        // Debug.Log("request next called with currentLine value of " + currentLine + " and textSections value of " + textSections.Length);
 
         if (currentTextController == null)
         {
@@ -202,33 +210,7 @@ public class TextBoxController : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// Coroutine to fade in the given line of text onto the TextBox
-    /// </summary>
-    /// <param name="t">Length of fade in</param>
-    /// <param name="i">Text to fade in</param>
-    /// <returns></returns>
-    public IEnumerator FadeInText(float t, Text i)
-    {   
-        // Creates new color at maximum alpha
-        i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
 
-        // While colour is less than white, increment color
-        while (i.color.a < 1f)
-        {   
-            if (i == null)
-            {
-                yield break;
-
-            } else
-            {
-                i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
-                yield return null;
-            }
-
-        }
-
-    }
 
     /// <summary>
     /// Initializes a new Text object from the base prefab, sets its position based on the current line, and returns the object. 
@@ -247,3 +229,4 @@ public class TextBoxController : MonoBehaviour
     }
 
 }
+*/

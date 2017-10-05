@@ -22,8 +22,6 @@ public class Question : TextController
             base.runScripts(noScripts);
         }
 
-
-
     }
 
 }

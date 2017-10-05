@@ -15,11 +15,6 @@ public class InteractableDialog : MonoBehaviour {
         stateController = FindObjectOfType<StateController>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public void updateText(TextController[] updatedText)
     {
         this.textControllers = updatedText;
